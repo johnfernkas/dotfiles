@@ -28,4 +28,5 @@ for dotfile in "${DOTFILES[@]}";do
 done
 
 # Special case symlink for settings.json becuase of the local file path
+rm -rf $HOME/Library/Application\ Support/Code/User/settings.json
 ln -s $HOME/.dotfiles/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
