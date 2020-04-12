@@ -2,17 +2,17 @@
 
 echo "Setting up your Mac..."
 
-# # Check for Homebrew and install it if we don't have it
-# if test ! $(which brew); then
-#     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# fi
+# Check for Homebrew and install it if we don't have it
+if test ! $(which brew); then
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
 
-# # Update Homebrew recipes
-# brew update
+# Update Homebrew recipes
+brew update
 
-# # Install Homebrew dependencies with bundle
-# brew tap homebrew/bundle
-# brew bundle
+# Install Homebrew dependencies with bundle
+brew tap homebrew/bundle
+brew bundle
 
 # Remove dotfiles locally and setup symlinks
 DIR=$HOME/.dotfiles
