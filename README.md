@@ -8,3 +8,4 @@ TODO:
   - [ ] List out Homebrew/Cask apps installed
 - [ ] Add macOS settings to install script
 - [ ] Merge in Git aliases from work computer
+- [ ] Merge in VS Code settings from work computer
