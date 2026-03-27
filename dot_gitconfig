@@ -1,0 +1,5 @@
+[user]
+	name = John Fernkas
+	email = 466754+johnfernkas@users.noreply.github.com
+[pull]
+	rebase = true
