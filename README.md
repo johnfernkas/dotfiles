@@ -33,7 +33,7 @@ chezmoi update
 
 ## Adding a new app
 
-Edit the `Brewfile` and run `chezmoi apply`. The package script re-runs automatically whenever the Brewfile changes.
+Edit the `dot_Brewfile` and run `chezmoi apply`. The package script re-runs automatically whenever the Brewfile changes.
 
 ## Useful commands
 
@@ -51,4 +51,4 @@ chezmoi cd                  # jump to the chezmoi source directory
 |---|---|
 | `dot_gitconfig.tmpl` | `~/.gitconfig` |
 | `dot_zshrc.tmpl` | `~/.zshrc` |
-| `Brewfile` | `~/Brewfile` |
+| `dot_Brewfile` | `~/.Brewfile` |

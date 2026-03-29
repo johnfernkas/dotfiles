@@ -1,6 +1,6 @@
 # Files that live in the repo but shouldn't be deployed as dotfiles
 README.md
-Brewfile.lock.json
+.Brewfile.lock.json
 scripts/
 
 # macOS

@@ -5,7 +5,7 @@
 # and finalizes the Xcode installation if present.
 #
 # Runs automatically any time the Brewfile changes (chezmoi apply).
-# Brewfile hash: {{ include "Brewfile" | sha256sum }}
+# Brewfile hash: {{ include "dot_Brewfile" | sha256sum }}
 
 set -e
 
@@ -27,7 +27,7 @@ echo "    Make sure you are signed in to the App Store before this runs,"
 echo "    otherwise Xcode will be skipped and you'll need to install it manually."
 echo ""
 
-brew bundle --file="$HOME/Brewfile" --no-lock
+brew bundle --no-lock
 
 # ── Ruby ──────────────────────────────────────────────────────────────────────
 echo ""
