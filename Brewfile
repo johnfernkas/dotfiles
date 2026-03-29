@@ -1,0 +1,108 @@
+# Brewfile
+# Managed by chezmoi. To regenerate from current machine:
+#   brew bundle dump --force --file="$HOME/Brewfile"
+#   chezmoi add ~/Brewfile
+
+# ── Taps ──────────────────────────────────────────────────────────────────────
+tap "espressif/eim"
+tap "steipete/tap"
+
+# ── Core Dev Tools ────────────────────────────────────────────────────────────
+brew "chezmoi"
+brew "git"
+brew "node"
+brew "pnpm"
+brew "rbenv"
+brew "cmake"
+brew "mas"
+
+# ── Python ────────────────────────────────────────────────────────────────────
+brew "python@3.13"
+brew "python@3.14"
+brew "python-setuptools"
+brew "openai-whisper"
+
+# ── Embedded Development ──────────────────────────────────────────────────────
+brew "dfu-util"
+brew "libusb"
+brew "mpremote"
+brew "sdl2"
+
+# QEMU / emulation dependencies
+brew "glib"
+brew "libgcrypt"
+brew "libslirp"
+brew "pixman"
+
+# ── Casks: Development ────────────────────────────────────────────────────────
+cask "android-platform-tools"
+cask "arduino-ide"
+cask "cursor"
+cask "docker-desktop"
+cask "espressif/eim/eim-gui"
+cask "ghostty"
+cask "visual-studio-code"
+
+# ── Casks: Design & Fabrication ───────────────────────────────────────────────
+cask "autodesk-fusion"
+cask "balenaetcher"
+cask "bambu-studio"
+cask "dymo-connect"
+cask "raspberry-pi-imager"
+
+# ── Casks: Productivity ───────────────────────────────────────────────────────
+cask "bartender"
+cask "bitwarden"
+cask "chatgpt"
+cask "notion"
+cask "raycast"
+cask "steipete/tap/codexbar"
+
+# ── Casks: Communication ──────────────────────────────────────────────────────
+cask "discord"
+cask "slack"
+cask "telegram"
+cask "zoom"
+
+# ── Casks: Other ──────────────────────────────────────────────────────────────
+cask "google-chrome"
+cask "home-assistant"
+cask "logi-options+"
+cask "proxy-audio-device"
+cask "sf-symbols"
+cask "sonos"
+cask "spotify"
+cask "tailscale-app"
+
+# ── Mac App Store ─────────────────────────────────────────────────────────────
+# NOTE: Requires being signed in to the App Store before running brew bundle.
+# Xcode (~12 GB) will be installed via mas. After installation, chezmoi's
+# run_once_02 script will accept the license automatically.
+mas "Anybox", id: 1593408455
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Wipr", id: 1320666476
+mas "Xcode", id: 497799835
+
+# ── VS Code Extensions ────────────────────────────────────────────────────────
+vscode "anthropic.claude-code"
+vscode "eamodio.gitlens"
+vscode "esbenp.prettier-vscode"
+vscode "github.copilot-chat"
+vscode "github.github-vscode-theme"
+vscode "keesschollaart.vscode-home-assistant"
+vscode "ms-python.debugpy"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "ms-python.vscode-python-envs"
+vscode "ms-vscode-remote.remote-containers"
+vscode "ms-vscode-remote.remote-wsl"
+vscode "ms-vscode-remote.vscode-remote-extensionpack"
+vscode "ms-vscode.cpptools"
+vscode "ms-vscode.remote-explorer"
+vscode "ms-vscode.remote-server"
+vscode "ms-vscode.vscode-serial-monitor"
+vscode "platformio.platformio-ide"
+vscode "shopify.ruby-lsp"
+vscode "vscode-icons-team.vscode-icons"
+vscode "zhuangtongfa.material-theme"

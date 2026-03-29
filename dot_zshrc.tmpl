@@ -58,7 +58,7 @@ ZSH_THEME="robbyrussell"
 # stamp shown in the history command output.
 # You can set one of the optional three formats:
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
+# or set a custom format using the strftime format specifications,
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
@@ -102,12 +102,12 @@ source $ZSH/oh-my-zsh.sh
 eval "$(rbenv init -)"
 
 # pnpm
-export PNPM_HOME="/Users/johnfernkas/Library/pnpm"
+export PNPM_HOME="{{ .chezmoi.homeDir }}/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
-# OpenClaw Completion
-source "/Users/johnfernkas/.openclaw/completions/openclaw.zsh"
+# OpenClaw Completion (only loaded if installed)
+[[ -f "{{ .chezmoi.homeDir }}/.openclaw/completions/openclaw.zsh" ]] && source "{{ .chezmoi.homeDir }}/.openclaw/completions/openclaw.zsh"

@@ -1,0 +1,66 @@
+#!/bin/bash
+# run_onchange_brew-packages.sh.tmpl
+#
+# Installs/updates all packages from the Brewfile, sets up rbenv/Ruby,
+# and finalizes the Xcode installation if present.
+#
+# Runs automatically any time the Brewfile changes (chezmoi apply).
+# Brewfile hash: {{ include "Brewfile" | sha256sum }}
+
+set -e
+
+echo ""
+echo "╔══════════════════════════════════════════════╗"
+echo "║  Install / Update Packages                   ║"
+echo "╚══════════════════════════════════════════════╝"
+
+# Ensure Homebrew is in PATH (Apple Silicon)
+if [[ -f /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# ── Brewfile ──────────────────────────────────────────────────────────────────
+echo ""
+echo "==> Installing packages from Brewfile..."
+echo "    NOTE: Xcode (~12 GB) is installed via the Mac App Store (mas)."
+echo "    Make sure you are signed in to the App Store before this runs,"
+echo "    otherwise Xcode will be skipped and you'll need to install it manually."
+echo ""
+
+brew bundle --file="$HOME/Brewfile" --no-lock
+
+# ── Ruby ──────────────────────────────────────────────────────────────────────
+echo ""
+echo "==> Setting up Ruby 3.2.2 via rbenv..."
+eval "$(rbenv init -)"
+rbenv install 3.2.2 --skip-existing
+rbenv global 3.2.2
+echo "    Ruby $(ruby --version) ready."
+
+# ── Xcode post-install setup ──────────────────────────────────────────────────
+# Xcode must be fully installed before this step.
+# This accepts the license agreement and points xcode-select at the full Xcode.
+if [ -d "/Applications/Xcode.app" ]; then
+  echo ""
+  echo "==> Finalizing Xcode setup..."
+  sudo xcodebuild -license accept
+  sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+  echo "    Xcode license accepted and developer tools path set."
+else
+  echo ""
+  echo "⚠  Xcode not found at /Applications/Xcode.app."
+  echo "   If it was skipped above (not signed in to App Store), install it from"
+  echo "   the App Store and then run:"
+  echo "     sudo xcodebuild -license accept"
+  echo "     sudo xcode-select -s /Applications/Xcode.app/Contents/Developer"
+fi
+
+echo ""
+echo "╔══════════════════════════════════════════════╗"
+echo "║  Packages up to date!                        ║"
+echo "║                                              ║"
+echo "║  Next steps (first-time only):               ║"
+echo "║  1. Restart your terminal                    ║"
+echo "║  2. Install Xcode from App Store if skipped  ║"
+echo "║  3. Set up SSH keys if needed                ║"
+echo "╚══════════════════════════════════════════════╝"
