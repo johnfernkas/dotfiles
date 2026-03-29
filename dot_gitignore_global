@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Credentials & secrets
+.env
+.env.local
+.env.*.local
+
+# Editor artifacts
+*.swp
+*.orig
+*.bak
+.idea/
+.vscode/
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# Ruby
+.bundle/
+
+# Logs & temp files
+*.log
+tmp/

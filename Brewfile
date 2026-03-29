@@ -10,7 +10,6 @@ tap "steipete/tap"
 # ── Core Dev Tools ────────────────────────────────────────────────────────────
 brew "chezmoi"
 brew "git"
-brew "node"
 brew "pnpm"
 brew "rbenv"
 brew "cmake"
@@ -18,21 +17,12 @@ brew "mas"
 
 # ── Python ────────────────────────────────────────────────────────────────────
 brew "python@3.13"
-brew "python@3.14"
 brew "python-setuptools"
 brew "openai-whisper"
 
 # ── Embedded Development ──────────────────────────────────────────────────────
 brew "dfu-util"
-brew "libusb"
 brew "mpremote"
-brew "sdl2"
-
-# QEMU / emulation dependencies
-brew "glib"
-brew "libgcrypt"
-brew "libslirp"
-brew "pixman"
 
 # ── Casks: Development ────────────────────────────────────────────────────────
 cask "android-platform-tools"
