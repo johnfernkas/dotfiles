@@ -18,6 +18,11 @@ You'll be prompted for your name and email (used in `~/.gitconfig`). After that,
 
 > **Before running:** Sign into the Mac App Store. Xcode (~12 GB) is installed via `mas` and requires an active App Store session.
 
+**If Xcode was skipped** (not signed in), install it from the App Store then run:
+```sh
+bash ~/.local/share/chezmoi/scripts/setup-xcode.sh
+```
+
 ## Keeping in sync
 
 On an existing machine, pull and apply the latest changes with:
