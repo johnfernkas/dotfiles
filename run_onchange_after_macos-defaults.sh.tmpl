@@ -61,9 +61,6 @@ defaults write com.apple.commerce AutoUpdateRestartRequired   -bool true
 {{- if ne .profile "minimal" }}
 echo "==> Configuring Finder..."
 
-killall Finder 2>/dev/null || true
-sleep 1
-
 defaults write com.apple.finder AppleShowAllFiles         -bool true
 defaults write NSGlobalDomain   AppleShowAllExtensions    -bool true
 defaults write com.apple.finder ShowPathbar               -bool true
@@ -71,15 +68,6 @@ defaults write com.apple.finder ShowStatusBar             -bool true
 defaults write com.apple.finder FXPreferredViewStyle      -string "Nlsv"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-# Large icon size (32) in list view across all view-settings keys
-for VIEW_KEY in StandardViewSettings FK_StandardViewSettings FK_DefaultViewSettings; do
-  /usr/libexec/PlistBuddy \
-    -c "Set :${VIEW_KEY}:ListViewSettings:iconSize 32" \
-    ~/Library/Preferences/com.apple.finder.plist 2>/dev/null || \
-  /usr/libexec/PlistBuddy \
-    -c "Add :${VIEW_KEY}:ListViewSettings:iconSize integer 32" \
-    ~/Library/Preferences/com.apple.finder.plist 2>/dev/null || true
-done
 
 defaults write com.apple.finder ShowHardDrivesOnDesktop         -bool false
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
