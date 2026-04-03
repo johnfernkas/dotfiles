@@ -1,0 +1,16 @@
+#!/bin/bash
+# run_once_after_dock-setup.sh.tmpl
+#
+# Clears the Dock to a blank slate on first setup.
+# Kept as run_once_ (not run_onchange_) so that manual Dock customizations
+# made after initial setup aren't wiped every time you edit other defaults.
+# Only runs on primary machines.
+
+{{- if and (eq .chezmoi.os "darwin") (eq .profile "primary") }}
+
+echo "==> Clearing Dock to blank slate (primary, run once)..."
+defaults write com.apple.dock persistent-apps -array
+killall Dock 2>/dev/null || true
+echo "✓ Dock cleared."
+
+{{- end }}
