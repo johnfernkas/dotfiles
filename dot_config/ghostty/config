@@ -1,3 +1,4 @@
 # Always open new tabs and windows at ~ instead of inheriting the
 # working directory of the current tab
 window-inherit-working-directory = false
+working-directory = home
