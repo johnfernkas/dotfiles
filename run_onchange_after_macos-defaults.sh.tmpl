@@ -48,6 +48,11 @@ defaults write com.apple.screensaver askForPassword      -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 sudo systemsetup -setrestartfreeze on 2>/dev/null || true
 
+# Enable Touch ID for sudo (uses sudo_local which survives macOS updates)
+if ! grep -q "pam_tid.so" /etc/pam.d/sudo_local 2>/dev/null; then
+  echo "auth       sufficient     pam_tid.so" | sudo tee /etc/pam.d/sudo_local > /dev/null
+fi
+
 # ── Software Updates ──────────────────────────────────────────────────────────
 echo "==> Configuring software updates..."
 defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
