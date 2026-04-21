@@ -101,6 +101,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 eval "$(rbenv init -)"
 
+# Bitwarden SSH Agent
+export SSH_AUTH_SOCK="{{ .chezmoi.homeDir }}/.bitwarden-ssh-agent.sock"
+
 # pnpm
 export PNPM_HOME="{{ .chezmoi.homeDir }}/Library/pnpm"
 case ":$PATH:" in
