@@ -73,7 +73,6 @@ defaults write com.apple.finder ShowStatusBar             -bool true
 defaults write com.apple.finder FXPreferredViewStyle      -string "Nlsv"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-
 defaults write com.apple.finder ShowHardDrivesOnDesktop         -bool false
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowMountedServersOnDesktop     -bool false
@@ -149,9 +148,13 @@ defaults write com.google.Chrome.canary DisablePrintPreview -bool true
 
 # ── Apply changes ─────────────────────────────────────────────────────────────
 echo "==> Restarting affected services..."
-killall Dock           2>/dev/null || true
+{{- if ne .profile "minimal" }}
 killall Finder         2>/dev/null || true
+{{- end }}
+{{- if eq .profile "primary" }}
+killall Dock           2>/dev/null || true
 killall SystemUIServer 2>/dev/null || true
+{{- end }}
 
 echo ""
 echo "✓ macOS defaults applied (profile: {{ .profile }})."

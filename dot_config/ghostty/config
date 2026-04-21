@@ -3,3 +3,7 @@
 window-inherit-working-directory = false
 tab-inherit-working-directory = false
 working-directory = home
+
+mouse-hide-while-typing = true
+quit-after-last-window-closed = true
+confirm-close-surface = false

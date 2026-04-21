@@ -8,3 +8,14 @@
 	defaultBranch = main
 [pull]
 	rebase = true
+[push]
+	autoSetupRemote = true
+[rerere]
+	enabled = true
+[merge]
+	conflictstyle = zdiff3
+[diff]
+	colorMoved = default
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	undo = reset HEAD~1 --mixed

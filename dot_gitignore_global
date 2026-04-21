@@ -7,6 +7,7 @@
 .env
 .env.local
 .env.*.local
+.envrc
 
 # Editor artifacts
 *.swp
@@ -26,6 +27,18 @@ __pycache__/
 
 # Ruby
 .bundle/
+
+# Swift / Xcode
+xcuserdata/
+DerivedData/
+.build/
+*.xcworkspace/xcuserdata/
+
+# direnv
+.direnv/
+
+# Windows
+Thumbs.db
 
 # Logs & temp files
 *.log

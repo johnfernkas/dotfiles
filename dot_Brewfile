@@ -14,6 +14,8 @@ brew "pnpm"
 brew "rbenv"
 brew "cmake"
 brew "mas"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
 
 # ── Python ────────────────────────────────────────────────────────────────────
 brew "python@3.13"
