@@ -27,6 +27,7 @@ brew "mpremote"
 # ── Casks: Development ────────────────────────────────────────────────────────
 cask "android-platform-tools"
 cask "arduino-ide"
+cask "claude-code"
 cask "cursor"
 cask "docker-desktop"
 cask "espressif/eim/eim-gui"
