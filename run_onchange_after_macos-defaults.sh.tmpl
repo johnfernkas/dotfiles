@@ -70,7 +70,7 @@ defaults write com.apple.finder AppleShowAllFiles         -bool true
 defaults write NSGlobalDomain   AppleShowAllExtensions    -bool true
 defaults write com.apple.finder ShowPathbar               -bool true
 defaults write com.apple.finder ShowStatusBar             -bool true
-defaults write com.apple.finder FXPreferredViewStyle      -string "Nlsv"
+defaults write com.apple.finder FXPreferredViewStyle      -string "clmv"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 defaults write com.apple.finder ShowHardDrivesOnDesktop         -bool false
@@ -84,6 +84,16 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores     -bool true
 defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
 defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
 defaults write com.apple.finder OpenWindowForNewRemovableDisk    -bool true
+
+# Default sort column to Date Added
+for VIEW_KEY in FK_StandardViewSettings StandardViewSettings; do
+  /usr/libexec/PlistBuddy \
+    -c "Set :${VIEW_KEY}:ColumnViewSettings:sortColumn dateAdded" \
+    ~/Library/Preferences/com.apple.finder.plist 2>/dev/null || \
+  /usr/libexec/PlistBuddy \
+    -c "Add :${VIEW_KEY}:ColumnViewSettings:sortColumn string dateAdded" \
+    ~/Library/Preferences/com.apple.finder.plist 2>/dev/null || true
+done
 
 # Snap-to-grid for icons on the desktop and in other icon views
 for VIEW_KEY in DesktopViewSettings FK_StandardViewSettings StandardViewSettings; do
