@@ -70,8 +70,8 @@ cask "tailscale-app"
 
 # ── Mac App Store ─────────────────────────────────────────────────────────────
 # NOTE: Requires being signed in to the App Store before running brew bundle.
-# Xcode (~12 GB) will be installed via mas. After installation, chezmoi's
-# run_once_02 script will accept the license automatically.
+# Xcode (~12 GB) will be installed via mas. After installation,
+# run_once_after_02_xcode-setup.sh accepts the license automatically.
 mas "Anybox", id: 1593408455
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
