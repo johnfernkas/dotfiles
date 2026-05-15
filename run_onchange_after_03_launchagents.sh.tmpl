@@ -1,0 +1,16 @@
+#!/bin/bash
+# run_once_after_03_launchagents.sh.tmpl
+#
+# Loads user LaunchAgents managed by chezmoi.
+# Runs once on first apply; re-run `chezmoi apply` after removing/re-adding an agent.
+
+set -e
+
+PLIST="$HOME/Library/LaunchAgents/com.{{ .chezmoi.username }}.chezmoi-update.plist"
+
+if launchctl list "com.{{ .chezmoi.username }}.chezmoi-update" &>/dev/null; then
+  launchctl unload "$PLIST"
+fi
+
+launchctl load "$PLIST"
+echo "✓ Loaded com.{{ .chezmoi.username }}.chezmoi-update (daily dotfile sync at 09:00)"

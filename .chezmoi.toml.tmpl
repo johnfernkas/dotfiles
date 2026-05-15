@@ -2,9 +2,11 @@
 {{- $email := promptStringOnce . "email" "What is your git email" -}}
 {{- $computerName := promptStringOnce . "computerName" "What should this computer be named" -}}
 {{- $profile := promptStringOnce . "profile" "Machine profile (primary / secondary / minimal)" -}}
+{{- $rubyVersion := promptStringOnce . "rubyVersion" "Ruby version to install via rbenv" -}}
 
 [data]
     name = {{ $name | quote }}
     email = {{ $email | quote }}
     computerName = {{ $computerName | quote }}
     profile = {{ $profile | quote }}
+    rubyVersion = {{ $rubyVersion | quote }}

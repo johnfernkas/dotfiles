@@ -28,10 +28,10 @@ brew bundle --global
 
 # ── Ruby ──────────────────────────────────────────────────────────────────────
 echo ""
-echo "==> Setting up Ruby 3.2.2 via rbenv..."
+echo "==> Setting up Ruby {{ .rubyVersion }} via rbenv..."
 eval "$(rbenv init -)"
-rbenv install 3.2.2 --skip-existing
-rbenv global 3.2.2
+rbenv install {{ .rubyVersion }} --skip-existing
+rbenv global {{ .rubyVersion }}
 echo "    Ruby $(ruby --version) ready."
 
 echo ""
