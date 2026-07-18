@@ -5,14 +5,17 @@
 
 # ── Taps ──────────────────────────────────────────────────────────────────────
 tap "espressif/eim"
+tap "mattt/tap"
 tap "steipete/tap"
 
 # ── Core Dev Tools ────────────────────────────────────────────────────────────
 brew "chezmoi"
+brew "flyctl"
 brew "gh"
 brew "git"
 brew "make"
 brew "ninja"
+brew "node"
 brew "pnpm"
 brew "rbenv"
 brew "cmake"
@@ -55,6 +58,7 @@ cask "bartender"
 cask "bitwarden"
 cask "chatgpt"
 cask "claude"
+cask "mattt/tap/iMCP"
 cask "notion"
 cask "raycast"
 cask "steipete/tap/codexbar"
