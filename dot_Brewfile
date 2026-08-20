@@ -60,6 +60,7 @@ cask "chatgpt"
 cask "claude"
 cask "mattt/tap/iMCP"
 cask "notion"
+cask "obsidian"
 cask "raycast"
 cask "steipete/tap/codexbar"
 
