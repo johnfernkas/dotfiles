@@ -1,0 +1,53 @@
+#!/bin/bash
+# run_onchange_after_04_bun-qmd.sh.tmpl
+#
+# Installs bun and the qmd CLI, and (re)writes the qmd launcher.
+#
+# qmd is a bun global, not a brew package, so it can't live in the Brewfile.
+# The launcher is rewritten unconditionally: `bun add -g @tobilu/qmd` replaces
+# it with a `#!/usr/bin/env node` symlink that fails on this node-less setup,
+# so re-run `chezmoi apply` after any qmd upgrade to restore it.
+
+set -e
+
+echo ""
+echo "╔══════════════════════════════════════════════╗"
+echo "║  bun + qmd                                   ║"
+echo "╚══════════════════════════════════════════════╝"
+
+BUN_BIN="{{ .chezmoi.homeDir }}/.bun/bin"
+QMD_GLOBAL="{{ .chezmoi.homeDir }}/.bun/install/global/node_modules/@tobilu/qmd"
+
+# ── bun ───────────────────────────────────────────────────────────────────────
+if [[ ! -x "$BUN_BIN/bun" ]]; then
+  echo "==> Installing bun..."
+  curl -fsSL https://bun.sh/install | bash
+else
+  echo "==> bun already installed ($("$BUN_BIN/bun" --version)), skipping."
+fi
+
+export PATH="$BUN_BIN:$PATH"
+
+# ── qmd ───────────────────────────────────────────────────────────────────────
+if [[ ! -d "$QMD_GLOBAL" ]]; then
+  echo "==> Installing @tobilu/qmd..."
+  "$BUN_BIN/bun" install -g @tobilu/qmd
+else
+  echo "==> @tobilu/qmd already installed, skipping."
+fi
+
+# ── Launcher ──────────────────────────────────────────────────────────────────
+# Always rewritten — see header note about `bun add -g` clobbering it.
+echo "==> Writing qmd launcher..."
+cat > "$BUN_BIN/qmd" <<'EOF'
+#!/bin/sh
+# Launcher for @tobilu/qmd on a node-less (bun-only) system.
+# Upstream's bin/qmd starts with `#!/usr/bin/env node`, which fails with ENOENT
+# here before its bun fallback can run. Run the CLI directly under bun instead.
+# Managed by chezmoi: run_onchange_after_04_bun-qmd.sh.tmpl
+exec {{ .chezmoi.homeDir }}/.bun/bin/bun \
+  {{ .chezmoi.homeDir }}/.bun/install/global/node_modules/@tobilu/qmd/dist/cli/qmd.js "$@"
+EOF
+chmod +x "$BUN_BIN/qmd"
+
+echo "✓ qmd ready: $("$BUN_BIN/qmd" --version 2>&1 | head -1)"
