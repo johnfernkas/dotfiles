@@ -24,12 +24,18 @@ eval "$(rbenv init -)"
 # ── Bitwarden SSH Agent ───────────────────────────────────────────────────────
 export SSH_AUTH_SOCK="{{ .chezmoi.homeDir }}/.bitwarden-ssh-agent.sock"
 
+# ── bun ──────────────────────────────────────────────────────────────────────
+export PATH="$HOME/.bun/bin:$PATH"
+
 # ── pnpm ─────────────────────────────────────────────────────────────────────
 export PNPM_HOME="{{ .chezmoi.homeDir }}/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
+# ── Home Assistant ───────────────────────────────────────────────────────────
+export HA_TOKEN=$(security find-generic-password -s "homeassistant-mcp" -a "claude-code" -w 2>/dev/null)
 
 # ── Shell enhancements (installed via Homebrew) ───────────────────────────────
 [[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
