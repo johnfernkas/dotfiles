@@ -9,6 +9,7 @@ tap "mattt/tap"
 tap "steipete/tap"
 
 # ── Core Dev Tools ────────────────────────────────────────────────────────────
+brew "age"
 brew "chezmoi"
 brew "flyctl"
 brew "gh"

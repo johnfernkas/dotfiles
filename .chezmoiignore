@@ -10,3 +10,6 @@ scripts/
 *.swp
 *.orig
 *.bak
+
+# age identity — must never enter the public repo
+.config/chezmoi/key.txt
