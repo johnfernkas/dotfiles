@@ -28,6 +28,7 @@ brew "zsh-syntax-highlighting"
 brew "python@3.13"
 brew "python-setuptools"
 brew "openai-whisper"
+brew "yamllint"  # `make lint` in Projects/home; pip install is blocked by PEP 668
 
 # ── Embedded Development ──────────────────────────────────────────────────────
 brew "arm-none-eabi-binutils"
