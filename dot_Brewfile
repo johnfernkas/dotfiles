@@ -18,6 +18,7 @@ brew "make"
 brew "ninja"
 brew "node"
 brew "pnpm"
+brew "poppler"  # pdftotext; reading component datasheets from the terminal
 brew "rbenv"
 brew "cmake"
 brew "mas"
@@ -31,6 +32,7 @@ brew "openai-whisper"
 brew "yamllint"  # `make lint` in Projects/home; pip install is blocked by PEP 668
 
 # ── Embedded Development ──────────────────────────────────────────────────────
+brew "arduino-cli"  # headless compile/upload for XIAO/ESP32; complements arduino-ide cask
 brew "arm-none-eabi-binutils"
 brew "arm-none-eabi-gcc"
 brew "dfu-util"
