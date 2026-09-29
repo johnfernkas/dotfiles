@@ -34,6 +34,9 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+# ── Rust (rustup) ────────────────────────────────────────────────────────────
+[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+
 # ── Home Assistant ───────────────────────────────────────────────────────────
 export HA_TOKEN=$(security find-generic-password -s "homeassistant-mcp" -a "claude-code" -w 2>/dev/null)
 
